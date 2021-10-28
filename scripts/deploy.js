@@ -1,5 +1,6 @@
 const main = async () => {
   const gameContractFactory = await hre.ethers.getContractFactory("MyEpicGame");
+
   const gameContract = await gameContractFactory.deploy(
     ["Bane", "Bristleback", "Crystalmaiden"], // Names
     [
@@ -8,25 +9,15 @@ const main = async () => {
       "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/crystal_maiden.png",
     ],
     [640, 640, 560], // HP values
-    [60, 55, 50] // Attack damage values
+    [60, 55, 50], // Attack damage values
+    "Roshan", // Boss name
+    "https://liquipedia.net/commons/images/0/02/Roshaningame.png", // Boss image
+    1000, // Boss hp
+    50 // Boss attack damage
   );
+
   await gameContract.deployed();
   console.log("Contract deployed to:", gameContract.address);
-
-  let txn;
-  txn = await gameContract.mintCharacterNFT(0);
-  await txn.wait();
-  console.log("Minted NFT #1");
-
-  txn = await gameContract.mintCharacterNFT(1);
-  await txn.wait();
-  console.log("Minted NFT #2");
-
-  txn = await gameContract.mintCharacterNFT(2);
-  await txn.wait();
-  console.log("Minted NFT #3");
-
-  console.log("Done deploying and minting!");
 };
 
 const runMain = async () => {
