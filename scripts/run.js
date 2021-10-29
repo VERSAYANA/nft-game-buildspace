@@ -10,8 +10,8 @@ const main = async () => {
     [640, 640, 560], // HP values
     [60, 55, 50], // Attack damage values
     "Roshan", // Boss name
-    "https://liquipedia.net/commons/images/0/02/Roshaningame.png", // Boss image
-    1000, // Boss hp
+    "https://i.imgur.com/nIu6wjS.png", // Boss image
+    2500, // Boss hp
     50 // Boss attack damage
   );
   await gameContract.deployed();
